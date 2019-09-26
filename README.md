@@ -96,9 +96,9 @@ This class will help you to keep data between two `States`.
 Use `copyWith` to update the new datas and keep the others, then `copyWith` will return the new instance `ExempleViewModel`.
 ```dart
 class ExempleViewModel {
-  final bool isBusy;
-  final String name;
-  final Data data;
+  bool isBusy;
+  String name;
+  Data data;
 
   ExempleViewModel({
     this.isBusy = false,
