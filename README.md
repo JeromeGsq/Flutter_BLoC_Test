@@ -2,10 +2,14 @@ Flutter Bloc
 ===============
 
 **Bloc package**: https://felangel.github.io/bloc
+
 **Bloc VSCode extension**: https://marketplace.visualstudio.com/items?itemName=FelixAngelov.bloc
+
 **Equatable**: https://pub.dev/packages/equatable
 
-• **Files and Folder structure for a Bloc**
+_______________
+
+• **files and folders**
 ```
 Project
 +-- lib
@@ -18,6 +22,7 @@ Project
             +-- example_viewmodel.dart
 ```
 • **bloc.dart**
+
 Useful to `import` each file in this folder:
 ```dart
 export 'example_bloc.dart';
@@ -27,6 +32,7 @@ export 'example_viewmodel.dart';
 ```
 
 • **example_event.dart**
+
 Events are the input to a Bloc. They are commonly dispatched in response to user interactions such as button presses or lifecycle events like page loads.
 You can add parameter to the event (ex: login & password from UI)
 ```dart
@@ -46,6 +52,7 @@ class EventC extends ExampleEvent{}
 ```
 
 • **example_state.dart**
+
 States are the output of a Bloc and represent a part of your application's state. UI components can be notified of states and redraw portions of themselves based on the current state.
 ```dart
 // Main state
@@ -79,6 +86,7 @@ class StateC extends ExempleViewModelState {
 ```
 
 • **example_viewmodel.dart**
+
 This class will help you to keep data between two `States`.
 Use `copyWith` to update the new datas and keep the others, then `copyWith` will return the new instance `ExempleViewModel`.
 ```dart
@@ -108,6 +116,7 @@ class ExempleViewModel {
 ```
 
 • **example_bloc.dart**
+
 A Bloc (Business Logic Component) is a component which converts a Stream of incoming Events into a Stream of outgoing States. Think of a Bloc as being the "brains" described above.
 
 Every Bloc must extend the base Bloc class which is part of the core bloc package.
@@ -147,7 +156,8 @@ You have to filter the event type then `yield` a new `State`. You can perform an
 Widgets
 ===============
 
-• **BlocProvider** - 
+• **BlocProvider** 
+
 BlocProvider is a Flutter widget which provides a bloc to its children via `BlocProvider.of<T>(context)`. 
 It is used as a dependency injection (DI) widget so that a single instance of a bloc can be provided to multiple widgets within a subtree.
 
@@ -167,7 +177,8 @@ class _ExemplePageState extends State<ExemplePage> {
 }
 ```
 
-• **BlocBuilder** - 
+• **BlocBuilder** 
+
 `BlocBuilder` is a Flutter widget which requires a Bloc and a builder function. 
 `BlocBuilder` handles building the widget in response to new states. `BlocBuilder` is very similar to `StreamBuilder` but has a more simple API to reduce the amount of boilerplate code needed.
 The builder function will potentially be called many times and should be a pure function that returns a widget in response to the state.
@@ -199,7 +210,8 @@ The builder function will potentially be called many times and should be a pure 
 ),
 ```
 
-• **BlocListener** - 
+• **BlocListener** 
+
 See `BlocListener` if you want to "do" anything in response to state changes such as navigation, showing a dialog, etc...
 
 `BlocListener` is a Flutter widget which takes a `BlocWidgetListener` and an optional `Bloc` and invokes the `listener` in response to state changes in the bloc. 
@@ -217,7 +229,8 @@ body: BlocListener<ExempleBloc, ExempleState>(
    child: ...
 }
 ```
-• **Dispatch events** - 
+• **Dispatch events** 
+
 ```dart
 FloatingActionButton(
    child: Icon(Icons.clear),
@@ -228,7 +241,8 @@ FloatingActionButton(
 ),
 ```
 
-• **Navigation** - 
+• **Navigation**
+
 You can use the `Navigator`:
 ```dart
 MaterialButton(
