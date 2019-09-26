@@ -285,7 +285,7 @@ More infos here : https://medium.com/flutterpub/effective-bloc-pattern-45c36d76d
 _______________
 
 > You will notice that I don't `dispose()` my Blocs. 
-> The BlocBuilder does it itself:
+> The `BlocProvider` does it itself:
 ```dart
 /// Automatically handles disposing the block when used with a `builder`.
 class BlocProvider<T extends Bloc<dynamic, dynamic>> extends Provider<T> {}
