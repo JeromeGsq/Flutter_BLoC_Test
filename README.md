@@ -10,7 +10,7 @@ Flutter Bloc
 _______________
 
 > This ReadMe does not reflect the classes and screens used in this repository.
-> You will find a simplified example of how I use the Bloc design pattern in this ReadMe.
+> You will find a simplified example of how I use Bloc in this ReadMe.
 
 _______________
 
