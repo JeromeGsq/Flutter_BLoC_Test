@@ -9,34 +9,34 @@ class MovieDetailsBloc extends Bloc<MovieDetailsEvent, MovieDetailsState> {
   MovieDetailsBloc(this.apiClient);
 
   @override
-  MovieDetailsState get initialState => MovieDetailsUninitialized(MovieDetailsViewModel());
+  MovieDetailsState get initialState => MovieDetailsUninitializedState(MovieDetailsViewModel());
 
   @override
   Stream<MovieDetailsState> mapEventToState(
     MovieDetailsEvent event,
   ) async* {
-    var state = (currentState as MovieDetailsData);
+    var state = (currentState as MovieDetailsViewModelState);
 
-    if (event is LoadMovie) {
-      yield MovieDetailsLoading(state.viewModel.copyWith(isBusy: true));
+    if (event is LoadMovieDetailsEvent) {
+      yield MovieDetailsLoadingState(state.viewModel.copyWith(isBusy: true));
 
       var movie = await this.apiClient.getMovie(event.movieId);
       await Future.delayed(Duration(seconds: 1));
-      yield MovieDetailsLoaded(
+      yield MovieDetailsLoadedState(
         state.viewModel.copyWith(isBusy: false, movie: movie),
       );
     }
 
-    if (event is LoadFullDescription) {
+    if (event is LoadFullDescriptionEvent) {
       var movie = await this.apiClient.getMovie(event.movieId, fullDescription: true);
-      yield MovieDetailsLoaded(
+      yield MovieDetailsLoadedState(
         state.viewModel.copyWith(fullDescription: movie.plot),
       );
-      this.dispatch(ToggleFullDescription());
+      this.dispatch(ToggleFullDescriptionEvent());
     }
 
-    if (event is ToggleFullDescription) {
-      yield MovieDetailsLoaded(
+    if (event is ToggleFullDescriptionEvent) {
+      yield MovieDetailsLoadedState(
         state.viewModel.copyWith(showFullDescription: !state.viewModel.showFullDescription),
       );
     }

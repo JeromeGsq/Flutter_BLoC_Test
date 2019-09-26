@@ -22,7 +22,8 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<MovieDetailsBloc>(
-      builder: (context) => MovieDetailsBloc(ApiClient())..dispatch(LoadMovie(this.widget.movieResult.imdbID)),
+      builder: (context) =>
+          MovieDetailsBloc(ApiClient())..dispatch(LoadMovieDetailsEvent(this.widget.movieResult.imdbID)),
       child: BlocListener<MovieDetailsBloc, MovieDetailsState>(
         listener: (context, state) {},
         child: Scaffold(
@@ -35,13 +36,13 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
           ),
           body: BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
             builder: (context, state) {
-              if (state is MovieDetailsUninitialized) {
+              if (state is MovieDetailsUninitializedState) {
                 return LoadingView();
               }
-              if (state is MovieDetailsError) {
+              if (state is MovieDetailsErrorState) {
                 return Center(child: Text("Error"));
               }
-              if (state is MovieDetailsLoading && state.viewModel.movie == null) {
+              if (state is MovieDetailsLoadingState && state.viewModel.movie == null) {
                 return LoadingView();
               }
               return buildPage(state, context);
@@ -52,7 +53,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
     );
   }
 
-  Widget buildPage(MovieDetailsData state, BuildContext context) {
+  Widget buildPage(MovieDetailsViewModelState state, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Center(
@@ -91,9 +92,9 @@ class _MovieDetailsPageState extends State<MovieDetailsPage> {
                       onPressed: () {
                         var bloc = BlocProvider.of<MovieDetailsBloc>(context);
                         if (state.viewModel?.fullDescription?.isEmpty ?? true) {
-                          bloc.dispatch(LoadFullDescription(this.widget.movieResult.imdbID));
+                          bloc.dispatch(LoadFullDescriptionEvent(this.widget.movieResult.imdbID));
                         } else {
-                          bloc.dispatch(ToggleFullDescription());
+                          bloc.dispatch(ToggleFullDescriptionEvent());
                         }
                       },
                     )

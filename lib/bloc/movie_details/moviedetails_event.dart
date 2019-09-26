@@ -6,13 +6,13 @@ abstract class MovieDetailsEvent extends Equatable {
   MovieDetailsEvent([List props = const <dynamic>[]]) : super(props);
 }
 
-class LoadMovie extends MovieDetailsEvent {
+class LoadMovieDetailsEvent extends MovieDetailsEvent {
   final String movieId;
-  LoadMovie(this.movieId);
+  LoadMovieDetailsEvent(this.movieId);
 }
 
-class LoadFullDescription extends LoadMovie {
-  LoadFullDescription(String movieId) : super(movieId);
+class LoadFullDescriptionEvent extends LoadMovieDetailsEvent {
+  LoadFullDescriptionEvent(String movieId) : super(movieId);
 }
 
-class ToggleFullDescription extends MovieDetailsEvent {}
+class ToggleFullDescriptionEvent extends MovieDetailsEvent {}

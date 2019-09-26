@@ -19,8 +19,9 @@ class ApiClient {
   Future<List<MovieResult>> getHomePageMovies(int pageIndex) async {
     var dio = Dio(); // TODO: don't do that
     var url = "${baseUrl}&s=orange&page=${pageIndex}";
-    print(url);
+
     Response response = await dio.get(url);
+    // Add more fack delay
     await Future.delayed(Duration(seconds: 1));
 
     if (response.statusCode == 200) {

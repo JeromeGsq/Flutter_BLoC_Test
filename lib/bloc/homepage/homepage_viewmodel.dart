@@ -1,22 +1,22 @@
 import 'package:flutter_bloc_test/models/movie_result.dart';
 
-class MoviesViewModel {
+class HomepageViewModel {
   final bool isBusy;
   final int pageIndex;
   final List<MovieResult> movies;
 
-  MoviesViewModel({
+  HomepageViewModel({
     this.isBusy = false,
     this.pageIndex = 1,
     this.movies,
   });
 
-  MoviesViewModel copyWith({
+  HomepageViewModel copyWith({
     bool isBusy,
     int pageIndex,
     List<MovieResult> movies,
   }) {
-    return MoviesViewModel(
+    return HomepageViewModel(
       isBusy: isBusy ?? this.isBusy,
       pageIndex: pageIndex ?? this.pageIndex,
       movies: movies ?? [],

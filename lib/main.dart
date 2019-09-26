@@ -7,7 +7,7 @@ import 'package:flutter_bloc_test/modules/movie_details/movie_details_page.dart'
 void main() {
   BlocSupervisor.delegate = SimpleBlocDelegate();
   runApp(
-    FlutterBLoCApp(title: "Hello"),
+    FlutterBLoCApp(title: "Flutter Bloc App"),
   );
 }
 

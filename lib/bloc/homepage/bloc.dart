@@ -1,4 +1,4 @@
-export 'movies_bloc.dart';
-export 'movies_event.dart';
-export 'movies_state.dart';
-export 'movies_viewmodel.dart';
+export 'homepage_bloc.dart';
+export 'homepage_event.dart';
+export 'homepage_state.dart';
+export 'homepage_viewmodel.dart';

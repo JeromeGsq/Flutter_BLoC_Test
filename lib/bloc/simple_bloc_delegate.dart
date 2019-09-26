@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 
+// Useful to log transitions & track user events
 class SimpleBlocDelegate extends BlocDelegate {
   @override
   void onEvent(Bloc bloc, Object event) {
