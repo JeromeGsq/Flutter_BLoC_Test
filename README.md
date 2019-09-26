@@ -9,6 +9,11 @@ Flutter Bloc
 
 _______________
 
+> This ReadMe does not reflect the classes and screens used in this repository.
+> You will find a simplified example of how I use the Bloc design pattern in this project.
+
+_______________
+
 • **files and folders**
 ```
 Project
@@ -277,6 +282,43 @@ Here are some rules:
 
 More infos here : https://medium.com/flutterpub/effective-bloc-pattern-45c36d76d5fe
 
+_______________
+
+> You will notice that I don't `dispose()` my Blocs. 
+> The BlocBuilder does it itself:
+```dart
+/// Automatically handles disposing the block when used with a `builder`.
+class BlocProvider<T extends Bloc<dynamic, dynamic>> extends Provider<T> {}
+```
+_______________
+
 
 Pro/Cons
 ===============
+**Cons:** 
+
+• Multiple `if`/`else if` inside the UI part to filter states
+
+• Lot of files for only one Bloc (4~5)
+
+• Lot of `Events` like `Redux`
+
+• Very difficult to use without a `viewModel` class passed through each states
+
+• No one seems to do the same thing on Internet tutorials
+
+• Hard to learn or understand ...
+
+**Pros:**
+
+• You can't break the design pattern easily
+
+• You can't edit the states outside the Bloc
+
+• You have access to the currentState easily
+
+• You can do asynchronous call without difficulty before returning a new state
+
+• No "visible" Streams, Sinks, Controllers, etc. thanks to the Bloc package
+
+• ... but easy to implement
