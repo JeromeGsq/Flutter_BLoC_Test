@@ -2,11 +2,11 @@ import 'package:flutter_bloc_test/models/movie.dart';
 import 'package:flutter_bloc_test/models/movie_result.dart';
 
 class MovieDetailsViewModel {
-  final bool isBusy;
-  final bool showFullDescription;
-  final MovieResult movieResult;
-  final Movie movie;
-  final String fullDescription;
+  bool isBusy;
+  bool showFullDescription;
+  MovieResult movieResult;
+  Movie movie;
+  String fullDescription;
 
   MovieDetailsViewModel({
     this.isBusy = false,

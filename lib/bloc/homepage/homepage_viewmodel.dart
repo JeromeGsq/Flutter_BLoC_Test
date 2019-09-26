@@ -1,9 +1,9 @@
 import 'package:flutter_bloc_test/models/movie_result.dart';
 
 class HomepageViewModel {
-  final bool isBusy;
-  final int pageIndex;
-  final List<MovieResult> movies;
+  bool isBusy;
+  int pageIndex;
+  List<MovieResult> movies;
 
   HomepageViewModel({
     this.isBusy = false,
